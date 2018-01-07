@@ -24,6 +24,17 @@ app.use(bodyParser.json())
 app.use(logger('dev'))
 app.use(errorhandler())
 app.use((req, res, next) => {
+  // Check post id and comment id
+  // if (req.params.postId && !store.posts[req.params.postId]) {
+  //   return res.status(400).send({
+  //     error: 'Please use a valid post id.'
+  //   })
+  // }
+  // if (req.params.commentId && !store.posts[req.params.postId].comments[req.params.commentId]) {
+  //   return res.status(400).send({
+  //     error: 'Please use a valid comment id.'
+  //   })
+  // }
   req.store = store
   next()
 })
