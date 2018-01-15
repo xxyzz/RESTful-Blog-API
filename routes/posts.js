@@ -20,11 +20,6 @@ module.exports = {
 	  res.status(201).send({postId: req.store.posts.length})
   },
   updatePost(req, res) {
-    // Check post id
-    if (!req.store.posts[req.params.postId])
-      return res.status(400).send({
-        error: 'Please use a valid post id.'
-      }) 
     if (!req.body.name || !req.body.url || !req.body.text)
       return res.status(400).send({
         error: 'Please post a complete post.'
@@ -39,10 +34,6 @@ module.exports = {
   	res.status(200).send(req.store.posts[req.params.postId])
   },
   removePost(req, res) {
-    if (!req.store.posts[req.params.postId])
-      return res.status(400).send({
-        error: 'Please use a valid post id.'
-      }) 
   	req.store.posts.splice(req.params.postId, 1)
   	res.status(204).send()
   }
